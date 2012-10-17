@@ -1,0 +1,75 @@
+
+/* Demo 1 */
+.demo-1 .uc-container{
+	width: 150px;
+	height: 150px;
+	margin: 60px auto;
+} 
+
+.demo-1 .uc-single, 
+.demo-1 .uc-final,
+.demo-1 .uc-initial-content,
+.demo-1 .uc-back,
+.demo-1 .uc-front {
+	background: #fff url(../images/paper.jpg) repeat center center;
+}
+
+.demo-1 span.clickme {
+    display: block;
+    float: left;
+    color: transparent;
+    width: 136px;
+    height: 71px;
+    margin: 85px 0 0 0px;
+    cursor: pointer;
+    background: transparent url(../images/clickme.png) no-repeat center center;
+}
+
+.demo-1 .scrollwrap {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    overflow: hidden;
+    position: absolute;
+    color: #224092;
+    font-family: "Satisfy", cursive;§
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7);
+    cursor: pointer;
+}
+
+.demo-1 .scrollwrap h3 {
+    font-weight: normal;
+    font-size: 22px;
+    padding: 30px 0 10px 30px;
+    pointer-events: none;
+}
+
+.demo-1 .scrollwrap p {
+    font-size: 18px;
+    padding: 0 40px 0 40px;
+    pointer-events: none;
+}
+
+.demo-1 .scrollwrap p.signature {
+    font-size: 20px;
+    padding: 10px 30px 0 30px;
+    text-align: right;
+    pointer-events: none;
+}
+
+.demo-1 .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: "Satisfy", cursive;
+    color: #224092;
+    cursor: pointer;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #224092;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 14px;
+}

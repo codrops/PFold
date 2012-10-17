@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>PFold: Paper-Like Unfolding Effect</title>
+        <meta name="description" content="PFold: Paper-Like Unfolding Effect" />
+        <meta name="keywords" content="css3, experiment, 3d, unfolding, fold, paper, component, element, web design, jquery, plugin, perspective" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/pfold.css" />
+        <link rel="stylesheet" type="text/css" href="css/custom2.css" />
+		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
+		<!--[if lte IE 8]><style>.support-note .note-ie{display:block;}</style><![endif]-->
+		<style>
+			body {
+				background-image: url(images/bg2.jpg);
+			}
+		</style>
+    </head>
+    <body>
+        <div class="container">
+		
+			<!-- Codrops top bar -->
+            <div class="codrops-top clearfix">
+                <a href="http://tympanus.net/Tutorials/CustomLoginFormStyling/">
+                    <strong>&laquo; Previous Demo: </strong>Custom Login Form Styling
+                </a>
+                <span class="right">
+					<a href="http://dribbble.com/twistedfork">Images by Dan Matutina</a>
+                    <a href="http://tympanus.net/codrops/?p=11459">
+                        <strong>Back to the Codrops Article</strong>
+                    </a>
+                </span>
+            </div><!--/ Codrops top bar -->
+			
+			<header>
+			
+				<h1><strong>PFold:</strong> Paper-Like Unfolding Effect</h1>
+				<h2>Paper-like unfolding effect experiment</h2>
+				
+				<nav class="codrops-demos">
+					<a href="index.html">Demo 1</a>
+					<a class="current-demo" href="index2.html">Demo 2</a>
+					<a href="index3.html">Demo 3</a>
+				</nav>
+				
+				<div class="support-note"><!-- let's check browser support with modernizr -->
+					<span class="no-csstransforms3d">CSS 3D transforms are not supported in your browser</span>
+					<span class="note-ie">Sorry, only modern browsers.</span>
+				</div>
+				
+			</header>
+			
+			<section class="main demo-2">
+				
+				<div id="grid" class="grid clearfix">
+				
+					<div class="uc-container">
+						<div class="uc-initial-content">
+							<img src="images/thumbs/1.jpg" alt="image01" />
+							<span class="icon-eye"></span>
+						</div>
+						<div class="uc-final-content">
+							<img src="images/large/1.jpg" alt="image01-large" />
+							<div class="title"><h4>The Professor</h4> by Dan Matutina <a href="http://drbl.in/dMLS" class="icon-link"></a></div>
+							<span class="icon-cancel"></span>
+						</div>
+					</div><!-- / uc-container -->
+
+					<div class="uc-container">
+						<div class="uc-initial-content">
+							<img src="images/thumbs/2.jpg" alt="image02" />
+							<span class="icon-eye"></span>
+						</div>
+						<div class="uc-final-content">
+							<img src="images/large/2.jpg" alt="image02-large" />
+							<div class="title"><h4>Planet</h4> by Dan Matutina <a href="http://drbl.in/eZoL" class="icon-link"></a></div>
+							<span class="icon-cancel"></span>
+						</div>
+					</div><!-- / uc-container -->
+
+					<div class="uc-container">
+						<div class="uc-initial-content">
+							<img src="images/thumbs/3.jpg" alt="image03" />
+							<span class="icon-eye"></span>
+						</div>
+						<div class="uc-final-content">
+							<img src="images/large/3.jpg" alt="image03-large" />
+							<div class="title"><h4>Angry Nerd Blofeld</h4> by Dan Matutina <a href="http://drbl.in/eLEa" class="icon-link"></a></div>
+							<span class="icon-cancel"></span>
+						</div>
+					</div><!-- / uc-container -->
+
+					<div class="uc-container">
+						<div class="uc-initial-content">
+							<img src="images/thumbs/4.jpg" alt="image04" />
+							<span class="icon-eye"></span>
+						</div>
+						<div class="uc-final-content">
+							<img src="images/large/4.jpg" alt="image04-large" />
+							<div class="title"><h4>Ero Senin</h4> by Dan Matutina <a href="http://drbl.in/dJfK" class="icon-link"></a></div>
+							<span class="icon-cancel"></span>
+						</div>
+					</div><!-- / uc-container -->
+
+				</div><!-- / grid -->
+				<p class="info"><strong>Demo 2:</strong> Two folding steps with different directions of folding according to the grid position</p>
+			</section>
+
+		</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.pfold.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				// say we want to have only one item opened at one moment
+				var opened = false;
+
+				$( '#grid > div.uc-container' ).each( function( i ) {
+
+					var $item = $( this ), direction;
+
+					switch( i ) {
+						case 0 : direction = ['right','bottom']; break;
+						case 1 : direction = ['left','bottom']; break;
+						case 2 : direction = ['right','top']; break;
+						case 3 : direction = ['left','top']; break;
+					}
+					
+					var pfold = $item.pfold( {
+						folddirection : direction,
+						speed : 300,
+						onEndFolding : function() { opened = false; },
+					} );
+
+					$item.find( 'span.icon-eye' ).on( 'click', function() {
+
+						if( !opened ) {
+							opened = true;
+							pfold.unfold();
+						}
+
+
+					} ).end().find( 'span.icon-cancel' ).on( 'click', function() {
+
+						pfold.fold();
+
+					} );
+
+				} );
+				
+			});
+		</script>
+    </body>
+</html>
