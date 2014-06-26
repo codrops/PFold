@@ -67,6 +67,8 @@
 	-o-backface-visibility: hidden;
 	-ms-backface-visibility: hidden;
 	backface-visibility: hidden;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .uc-part .uc-back {
